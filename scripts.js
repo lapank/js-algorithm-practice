@@ -46,16 +46,51 @@ function queue(){
             this.data.push(x);
         }
         dequeue(){
-            if(this.isEmpty() == true){
+            if(this.isEmpty()){
                 console.log("The queue is empty");
             }else{
                 this.data.shift();  
             }
         }
+        front(){
+            if(this.isEmpty()){
+                console.log("The queue is empty");
+            }else{
+              return this.data[0];  
+            }
+        }
         isEmpty(){
             return this.data.length == 0;
         }
+        printQueue(){
+            if(this.isEmpty()){
+                console.log("The queue is empty");
+            }else{
+              return this.data.toString();  
+            }
+        }
+        size(){
+            return this.data.length;
+        }
     }
+
+    let queue1 = new Queue();
+    queue1.enqueue("dogs");
+
+    console.log(queue1.printQueue());
+    
+    queue1.enqueue("cats");
+    queue1.enqueue("frogs");
+    queue1.enqueue("ponies");
+
+    console.log(queue1.printQueue());
+
+    queue1.dequeue();
+
+    console.log(queue1.printQueue());
+
+    console.log(queue1.size());
+
 }
 queue();
 
