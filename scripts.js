@@ -4,6 +4,7 @@ function makeArray(){
     let myArray = [3,4,5];
     console.log(myArray);
 }
+makeArray();
 
 // Linked Lists
 
@@ -30,6 +31,7 @@ function linkedList(){
 
     console.log(list1.head.next.data);
 }
+linkedList();
 
 // Hash Table
 
