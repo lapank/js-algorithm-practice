@@ -33,6 +33,34 @@ function linkedList(){
 }
 linkedList();
 
+// Tree
+
+// Queue
+
+function queue(){
+    class Queue{
+        constructor(){
+            this.data = [];
+        }
+        enqueue(x){
+            this.data.push(x);
+        }
+        dequeue(){
+            if(this.isEmpty() == true){
+                console.log("The queue is empty");
+            }else{
+                this.data.shift();  
+            }
+        }
+        isEmpty(){
+            return this.data.length == 0;
+        }
+    }
+}
+queue();
+
+// Stack
+
 // Hash Table
 
 // Graph
