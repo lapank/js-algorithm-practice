@@ -26,13 +26,9 @@ function linkedList(){
             }
         stackAdd(x){
             let oldHead = this.head;
-            console.log("oldHead " + oldHead.data);
             let newNode = new Node(x);
-            console.log("newNode " + newNode.data);
             newNode.next = oldHead;
-            console.log("newNode next " + newNode.next.data);
             this.head = newNode;
-            console.log("listHead " + this.head.data);
         }
         stackDelete(){
             let oldHead = this.head;
@@ -40,8 +36,15 @@ function linkedList(){
             delete this.head;
             this.head = newHead;
         }
-        queueAdd(){}
-        queueDelete(){}
+        queueAdd(x){
+            let newNode = new Node(x);
+            this.getLast().next = newNode;
+        }
+        queueDelete(){
+            let newHead = this.head.next;
+            delete this.head;
+            this.head = newHead;
+        }
 
         }
 
@@ -66,6 +69,11 @@ function linkedList(){
     console.log("Last Node " + list1.getLast().data);
     list1.stackDelete();
     console.log("New First Node " + list1.getFirst().data);
+    list1.queueAdd(87);
+    console.log("New Last Node " + list1.getLast().data);
+    list1.queueDelete();
+    console.log("New First Node " + list1.getFirst().data);
+
 
 }
 linkedList();
@@ -159,5 +167,54 @@ function stack(){
     }
 }
 // Hash Table
+
+function hash(){
+
+    class HashTable{
+        constructor(){
+            this.table = new Array(127);
+            this.size = 0;
+        }
+        _hash(key){
+            let hash = 0;
+            for (let i = 0; i < key.length; i++){
+                hash += key.charCodeAt(i);
+            }
+            return hash % this.table.length;
+        }
+        set(key, value){
+            const index = this._hash(key);
+            this.table[index] = [key, value];
+            this.size++;
+        }
+        get(key){
+            const index = this._hash(key);
+            return this.table[index];
+        }
+        remove(key){
+            const index = this._hash(key);
+
+            //Make sure you are in the correct array in this bucket and that the bucket isn't empty
+            if(this.table[index] && thiss.table[index].length){
+                this.table[index] = undefined;
+                this.size--;
+            }else{
+                return false;
+            }
+            
+        }
+    }
+
+    let hashTable = new HashTable();
+    hashTable.set("Canada", 300);
+    hashTable.set("France", 100);
+    hashTable.set("Spain", 110);
+
+    //Need collision detection and display function
+}
+
+hash();
+
+
 
 // Graph
